@@ -291,10 +291,10 @@ td.le{text-align:left}
             </div>
             <label>전표일자</label>
             <div class="fw">
-                <input type="date" id="sdf" value="2025-01-01" style="width:120px">
+                <input type="date" id="sdf" style="width:120px">
                 <button class="fbtn" onclick="showToast('inf','달력')">&#128197;</button>
                 <span style="color:#94a3b8;font-size:11px">~</span>
-                <input type="date" id="sdt" value="2025-12-31" style="width:120px">
+                <input type="date" id="sdt" style="width:120px">
                 <button class="fbtn" onclick="showToast('inf','달력')">&#128197;</button>
             </div>
             <label>작성부서</label>
@@ -689,7 +689,10 @@ function pAmt(t){
     for(var i=0;i<ps.length;i++){var m=t.match(ps[i].r);if(m)return Math.round(parseFloat(m[1].replace(/,/g,''))*ps[i].m);}return null;
 }
 
-// ===== INIT: 초기 조회 =====
+// ===== INIT: 검색조건 현재연도 설정 + 초기 조회 =====
+var curYear = new Date().getFullYear();
+document.getElementById('sdf').value = curYear + '-01-01';
+document.getElementById('sdt').value = curYear + '-12-31';
 doSearch();
 
 })();
